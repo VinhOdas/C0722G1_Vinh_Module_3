@@ -1,18 +1,18 @@
-drop DATABASE IF EXISTS student_management ;
-CREATE DATABASE student_management;
+drop database if exists  student_management ;
+create database student_management;
 USE student_management;
-CREATE TABLE `student_management`.`class` (
-  `id` INT PRIMARY KEY AUTO_INCREMENT,
+create table `student_management`.`class` (
+  `id` int primary key auto_increment,
   `name` varchar(255) 
 
    );
-   CREATE TABLE `student_management`.`teacher` (
+   create table `student_management`.`teacher` (
   `id` int auto_increment  PRIMARY KEY,
-  `name` VARCHAR(45) ,
+  `name` varchar(45) ,
   `age` int,
   `country` varchar(255) 
   );
-  INSERT INTO `student_management`.`class` ( `name`) VALUES ('vinh');
-  INSERT INTO `student_management`.`class` ( `name`) VALUES ('vinh1');
-  INSERT INTO `student_management`.`class` ( `name`) VALUES ('vinh2');
-  INSERT INTO `student_management`.`class` ( `name`) VALUES ('vinh3');
+  insert into `student_management`.`class` ( `name`) values ('vinh');
+  insert into `student_management`.`class` ( `name`) values ('vinh1');
+  insert into `student_management`.`class` ( `name`) values ('vinh2');
+  insert into `student_management`.`class` ( `name`) values ('vinh3');
