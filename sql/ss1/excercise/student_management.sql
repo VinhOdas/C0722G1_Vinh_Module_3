@@ -7,7 +7,7 @@ create table `student_management`.`class` (
 
    );
    create table `student_management`.`teacher` (
-  `id` int auto_increment  PRIMARY KEY,
+  `id` int auto_increment  primary key,
   `name` varchar(45) ,
   `age` int,
   `country` varchar(255) 
