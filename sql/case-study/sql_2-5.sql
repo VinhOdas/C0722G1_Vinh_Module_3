@@ -15,7 +15,7 @@ from
 where
     (dia_chi like '% Quảng Trị'
         or dia_chi like '% Đà Nẵng')
-        and ((year(now()) - YEAR(ngay_sinh) between 18 and 50));
+        and ((year(now()) - year(ngay_sinh) between 18 and 50));
        
        
 -- bài 4
