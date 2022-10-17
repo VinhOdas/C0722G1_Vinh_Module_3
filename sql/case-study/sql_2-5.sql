@@ -19,7 +19,7 @@ where
        
        
 -- bài 4
-select  khach_hang.ma_khach_hang, khach_hang.ho_ten,COUNT(hop_dong.ma_khach_hang) as so_lan_dat_phong 
+select  khach_hang.ma_khach_hang, khach_hang.ho_ten,count(hop_dong.ma_khach_hang) as so_lan_dat_phong 
 from khach_hang 
  join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
  join loai_khach on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
