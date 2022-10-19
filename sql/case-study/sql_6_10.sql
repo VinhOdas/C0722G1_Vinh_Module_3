@@ -30,13 +30,13 @@ where year(hop_dong.ngay_lam_hop_dong) = 2021);
 
 -- task 8
 -- Hiển thị thông tin ho_ten khách hàng có trong hệ thống,
---  với yêu cầu ho_ten không trùng nhau. (3 cách)
+--  với yêu cầu ho_ten không trùng nhau
 
 select ho_ten 
-from khach_hang a
+from khach_hang 
 union
 select ho_ten
-from khach_hang b;
+from khach_hang ;
 
 -- task 9
 -- thực hiện thống kê doanh thu theo tháng, 
