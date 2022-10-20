@@ -1,3 +1,4 @@
+
 insert into khu_nghi_duong_furama.vi_tri (ten_vi_tri) values("Quản Lý");
 insert into khu_nghi_duong_furama.vi_tri (ten_vi_tri)values("Nhân Viên");
 
