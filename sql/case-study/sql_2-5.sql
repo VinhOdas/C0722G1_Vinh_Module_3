@@ -5,11 +5,10 @@ select
 from
     nhan_vien
 where
-    (ho_ten regexp '^[HKT]')
+    (ho_ten like 'H%' or ho_ten like 'K%' or  ho_ten like 'T%')
         and (char_length(ho_ten) <= 15);
 -- bài 3
-select 
-    *
+select *
 from
     khach_hang
 where

@@ -32,29 +32,42 @@ where year(hop_dong.ngay_lam_hop_dong) = 2021);
 -- Hiển thị thông tin ho_ten khách hàng có trong hệ thống,
 --  với yêu cầu ho_ten không trùng nhau
 
+-- cách 1:
 select ho_ten 
-from khach_hang 
-union
-select ho_ten
-from khach_hang ;
+from khach_hang
+group by ho_ten;
+
+-- cách 2:
+Select Distinct ho_ten
+From khach_hang;
+
+-- cách 3:
+SElect ho_ten 
+FRom khach_hang a
+UNion
+sElect ho_ten
+FRom khach_hang b;
 
 -- task 9
 -- thực hiện thống kê doanh thu theo tháng, 
 -- nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có
 -- bao nhiêu khách hàng thực hiện đặt phòng.
 
-select month(ngay_lam_hop_dong) as thang, count(ma_hop_dong) 
+select month(ngay_lam_hop_dong) as thang_lam_hop_dong, count(ma_hop_dong) 
 from hop_dong
 where year(ngay_lam_hop_dong) = 2021
-group by thang
-order by thang;
+group by thang_lam_hop_dong
+order by thang_lam_hop_dong;
 
 -- task 10
 -- hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm. 
 -- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, 
 -- so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
 
-select hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc, hop_dong.tien_dat_coc, sum(ifnull(hop_dong_chi_tiet.so_luong,0))
+select hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc, hop_dong.tien_dat_coc, 
+sum(ifnull(hop_dong_chi_tiet.so_luong,0))
 from hop_dong
 left join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
 group by hop_dong.ma_hop_dong;
+
+
