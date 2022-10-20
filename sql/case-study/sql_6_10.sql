@@ -31,7 +31,7 @@ where year(hop_dong.ngay_lam_hop_dong) = 2021);
 
 
 -- task 8
--- Hiển thị thông tin ho_ten khách hàng có trong hệ thống,
+-- hiển thị thông tin ho_ten khách hàng có trong hệ thống,
 --  với yêu cầu ho_ten không trùng nhau
 
 -- cách 1:
@@ -44,9 +44,9 @@ Select Distinct ho_ten
 From khach_hang;
 
 -- cách 3:
-SElect ho_ten 
-FRom khach_hang a
-UNion
+select ho_ten 
+from khach_hang a
+uNion
 sElect ho_ten
 FRom khach_hang b;
 
