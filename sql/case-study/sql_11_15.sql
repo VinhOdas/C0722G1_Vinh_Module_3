@@ -22,7 +22,7 @@ select hop_dong.ma_hop_dong, nhan_vien.ho_ten, khach_hang.ho_ten,khach_hang.so_d
 from hop_dong
  join nhan_vien on nhan_vien.ma_nhan_vien = hop_dong.ma_nhan_vien
  join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
- join dich_vu ON dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
+ join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
 left join  hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
 where hop_dong.ngay_lam_hop_dong between '2020-10-01' and '2020-12-30' and hop_dong.ma_hop_dong not in (
 select hop_dong.ma_hop_dong 
@@ -34,16 +34,15 @@ group by  hop_dong.ma_hop_dong;
 -- Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
 
-drop view if exists view1;
-create view view1 as
-select dich_vu_di_kem.ma_dich_vu_di_kem , dich_vu_di_kem.ten_dich_vu_di_kem , sum(ifnull(hop_dong_chi_tiet.so_luong,0)) as so_luong_dich_vu_di_kem  
-from dich_vu_di_kem 
-join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
-group by hop_dong_chi_tiet.ma_dich_vu_di_kem;
-select view1.ma_dich_vu_di_kem,view1.ten_dich_vu_di_kem, view1.so_luong_dich_vu_di_kem  
-from view1
-where view1.so_luong_dich_vu_di_kem = (select max(demo.so_luong_dich_vu_di_kem) from view1);
-
+select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, sum(hdct.so_luong) so_lan_su_dung
+from dich_vu_di_kem dvdk
+ join hop_dong_chi_tiet hdct on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+group by dvdk.ma_dich_vu_di_kem
+having so_lan_su_dung >= all
+  (select sum(hdct.so_luong) so_lan_su_dung
+   from dich_vu_di_kem dvdk
+    join hop_dong_chi_tiet hdct on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+   group by dvdk.ma_dich_vu_di_kem);
 -- task 14
 -- Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung (được tính dựa trên việc count các ma_dich_vu_di_kem).
@@ -57,6 +56,8 @@ join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_d
 group by hop_dong_chi_tiet.ma_dich_vu_di_kem
 having so_lan_su_dung = 1
 order by hop_dong.ma_hop_dong;
+
+
 
 -- task 15
 -- Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 

@@ -55,7 +55,7 @@ FRom khach_hang b;
 -- nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có
 -- bao nhiêu khách hàng thực hiện đặt phòng.
 
-select month(ngay_lam_hop_dong) as thang_lam_hop_dong, count(ma_hop_dong) 
+select month(hop_dong.ngay_lam_hop_dong) as thang_lam_hop_dong, count(hop_dong.ma_khach_hang) as so_lan_dat_phong
 from hop_dong
 where year(ngay_lam_hop_dong) = 2021
 group by thang_lam_hop_dong
