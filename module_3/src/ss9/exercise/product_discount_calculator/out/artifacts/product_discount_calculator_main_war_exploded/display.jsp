@@ -13,15 +13,15 @@
             <legend style="font-size: 60px; color: orange"  >Kết Quả</legend>
             <div class="mb-3">
                 <label class="form-label" style="font-size: 45px">Mô tả sản phẩm:</label>
-                <h1> ${product_description}</h1>
+                <h1 style="background: orange"> ${product_description}</h1>
             </div>
             <div class="mb-3">
                 <label class="form-label" style="font-size: 45px">Giá niêm yết của sản phẩm:</label>
-                <h1> ${list_price}</h1>
+                <h1 style="background: orange"> ${list_price}</h1>
             </div>
             <div class="mb-3">
                 <label class="form-label" style="font-size: 45px">giá sau khi chiết khấu:</label>
-                <h1> ${discountPrice}</h1>
+                <h1 style="background: orange"> ${discountPrice}</h1>
             </div>
         </fieldset>
     </form>
