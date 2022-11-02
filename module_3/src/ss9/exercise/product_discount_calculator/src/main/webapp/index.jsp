@@ -12,10 +12,10 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="background: aqua">
 
 <center>
-    <form  action="/display" method="post" >
+    <form  action="/display" method="post" style="background: orange" >
         <fieldset >
             <legend>Calculator</legend>
             <div class="mb-3">
@@ -31,7 +31,7 @@
                 <input type="text"  name="discount_percent" class="form-control" placeholder="Discount Percent" style="width: 50%">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">Submit</button>
         </fieldset>
     </form>
 
