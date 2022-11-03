@@ -21,26 +21,22 @@ from nhan_vien;
 --  17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
 -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 1.000.000 VNĐ. ??????
 
-
-update khach_hang 
-set khach_hang.ma_loai_khach =1 
-wheRe khach_hang.ma_khach_hang IN (
-SELECT khach_hang.ma_khach_hang as ma_khach_hang,khach_hang.ho_ten,loai_khach.ten_loai_khach,
- hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc,
- (ifnull(dich_vu.chi_phi_thue,0)+ SUM(ifnull(hop_dong_chi_tiet.so_luong,0)*ifnull(dich_vu_di_kem.gia,0))) as tong_tien
-FROM khach_hang
-LEFT JOin loai_khach ON khach_hang.ma_loai_khach = loai_khach.ma_loai_khach 
-lefT JOIN hop_dong ON khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
-lefT joiN hop_dong_chi_tiet ON hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong 
-LEFT JOIN dich_vu ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu 
-LEFT JOIn dich_vu_di_kem On dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem 
-wHEre ten_loai_khach = "Platinium" 
-group by ma_khach_hang
-having sum(tong_tien)>1000000);
-
 sELECT *
  FROM khach_hang;
 
+update khach_hang
+set khach_hang.ma_loai_khach = 1
+where khach_hang.ma_khach_hang IN (select k.ma_khach_hang
+						from khach_hang k 
+						join hop_dong hd on hd.ma_khach_hang = k.ma_khach_hang
+						join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
+						join hop_dong_chi_tiet hdd on hdd.ma_hop_dong = hd.ma_hop_dong
+						join dich_vu_di_kem dk on dk.ma_dich_vu_di_kem = hdd.ma_dich_vu_di_kem
+						join loai_khach lk on lk.ma_loai_khach = k.ma_loai_khach
+						where lk.ten_loai_khach = 'platinium' and year(hd.ngay_lam_hop_dong) = 2021
+						group by k.ma_khach_hang
+						having sum((dv.chi_phi_thue + (hdd.so_luong * dk.gia))) > 1000000);
+                        
 
 -- task 18
 -- xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).

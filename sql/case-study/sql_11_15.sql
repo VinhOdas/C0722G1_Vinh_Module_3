@@ -58,7 +58,6 @@ having so_lan_su_dung = 1
 order by hop_dong.ma_hop_dong;
 
 
-
 -- task 15
 -- Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
 -- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
