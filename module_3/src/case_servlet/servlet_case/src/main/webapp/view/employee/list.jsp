@@ -53,7 +53,8 @@
             <li class="list__item d-flex justify-content-center align-items-center"><a href="/customers">Customer</a></li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="/service">Service</a>
             </li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract">Contract</a></li>
+            <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract
+">Contract</a></li>
         </ul>
     </div>
 </section>
