@@ -18,7 +18,7 @@ public class CalculatorServlet extends HttpServlet {
         String result = "";
         try {
             result = String.format("%s %s %s = %s", operandFirst, operator, operandSeconds, calculate(operandFirst, operandSeconds, operator));
-        } catch (DivideBy0Exception e) {
+        } catch (DivideByException e) {
             result = e.getMessage();
         } catch (RuntimeException e) {
             result = e.getMessage();
@@ -51,7 +51,7 @@ public class CalculatorServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    public static double calculate(double number1, double number2, String operator) throws DivideBy0Exception {
+    public static double calculate(double number1, double number2, String operator) throws DivideByException {
 
         switch (operator) {
             case "+":
@@ -64,7 +64,7 @@ public class CalculatorServlet extends HttpServlet {
                 if (number2 != 0) {
                     return number1 / number2;
                 } else {
-                    throw new DivideBy0Exception("Can't divide by zero");
+                    throw new DivideByException("Can't divide by zero");
                 }
             default:
                 throw new RuntimeException("Invalid operation");

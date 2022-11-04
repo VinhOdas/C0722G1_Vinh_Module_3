@@ -1,5 +1,5 @@
-public class DivideBy0Exception extends ArithmeticException {
-    public DivideBy0Exception(String str) {
+class DivideByException extends ArithmeticException {
+    public DivideByException(String str) {
         super(str);
     }
 }
