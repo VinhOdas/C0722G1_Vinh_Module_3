@@ -19,29 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="773f7b86-3648-4921-aac0-80de4538b327" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/java/controller/DisplayLibraryListServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/java/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/display.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/image/98644.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/image/cat_uyen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/image/sieu_nhan_do.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/image/sieu_nhan_vang.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/image/sieu_nhan_xanh.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../../library/src/main/webapp/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../oi_gioi_oi/src/main/java/vinhodas/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../oi_gioi_oi/src/main/java/vinhodas/controller/ProductServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../oi_gioi_oi/src/main/webapp/view/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../oi_gioi_oi/src/main/webapp/view/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../sql/case-study/sql_11_15.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../sql/case-study/sql_11_15.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../sql/case-study/sql_16_20.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../sql/case-study/sql_16_20.sql" afterDir="false" />
-    </list>
+    <list default="true" id="773f7b86-3648-4921-aac0-80de4538b327" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -181,6 +159,7 @@
       <workItem from="1667461156427" duration="68000" />
       <workItem from="1667463187202" duration="114000" />
       <workItem from="1667464301544" duration="435000" />
+      <workItem from="1667532484523" duration="168000" />
     </task>
     <servers />
   </component>
