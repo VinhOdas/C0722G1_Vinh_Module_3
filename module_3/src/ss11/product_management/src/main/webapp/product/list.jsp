@@ -11,8 +11,40 @@
 <h1>Products</h1>
 <p>
     <a href="/products?action=create">Create new product</a>
-    <a href="/products?action=search">Tìm kiếm sản phẩm</a>
 </p>
+<form method="post">
+    <fieldset>
+        <legend>Categories:</legend>
+        <table>
+            <tr>
+                <td><input type="radio" name="option" value="id" onclick="openInput(this.value)">ID:
+                </td>
+                <td><input type="text" name="id" id="id" disabled="disabled">
+                </td>
+                <td>Search by name</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="option" value="name" onclick="openInput(this.value)">Product name:
+                </td>
+                <td><input type="text" name="name" id="name" disabled="disabled"></br>
+                </td>
+                <td>Search by price</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="option" value="Price" onclick="openInput(this.value)">Giá: From
+                </td>
+                <td><input type="number" name="minPrice" id="minPrice" disabled="disabled">To
+                </td>
+                <td><input type="number" name="maxPrice" id="maxPrice" disabled="disabled">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Search"></td>
+            </tr>
+        </table>
+
+    </fieldset>
+</form>
 <table class="table table-success table-striped" border="1">
     <tr>
         <td>Name</td>
@@ -34,4 +66,12 @@
     </c:forEach>
 </table>
 </body>
+<script>
+    let inputId = ["id", "name", "minPrice", "maxPrice", "producer"];
+    function openInput(value) {
+        for (let element of inputId) {
+            document.getElementById(element).disabled = !element.includes(value);
+        }
+    }
+</script>
 </html>
