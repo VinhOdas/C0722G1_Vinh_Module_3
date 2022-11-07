@@ -135,6 +135,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void searchEmployee(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
@@ -159,8 +160,8 @@ public class EmployeeServlet extends HttpServlet {
             request.getRequestDispatcher("view/employee/edit.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {            e.printStackTrace();
+
         }
 
 
