@@ -28,6 +28,9 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public List<Product> selectAll() {
+
+
+
         List<Product> productList = new ArrayList<>();
         Connection connection = DataBaseRepository.getConnection();
         try {

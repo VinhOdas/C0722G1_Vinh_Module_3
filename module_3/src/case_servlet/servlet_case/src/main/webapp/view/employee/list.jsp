@@ -56,52 +56,141 @@
             <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract
 ">Contract</a></li>
         </ul>
+        <form style="margin-top: 23px" action="/employees">
+            <input type="hidden" name="action" value="find">
+            <input type="text" name="search">
+            <select name="employee_type">
+                <option value="0">----</option>
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+            </select>
+            <input type="submit" value="Search" class="btn btn-info">
+        </form>
     </div>
-</section>
 
-<section class="footer d-flex justify-content-center mt-5">
-    <div class="wrapper container">
-        <div class="row h-100">
-            <div class="col-6 mt-auto mb-5">
-                <p class="fs-5 text-uppercase text-dark fw-bold">Our Brands</p>
-                <div class="d-flex mt-4">
-                    <img class="footer__brand-logo" src="./images/xclusive.png" alt="">
-                    <img class="footer__brand-logo" src="./images/fx.png" alt="">
-                </div>
-            </div>
-            <div class="col-6">
-                <h3 class="fs-2 text-uppercase text-dark fw-bold mb-4"> VINH ODAS</h3>
-                <div class="row">
-                    <div class="col-3">
-                        <div class="d-flex flex-column gap-2">
-                            <a href="#" class="text-dark fs-5">Our hotel</a>
-                            <a href="#" class="text-dark fs-5">Promotions</a>
-                            <a href="#" class="text-dark fs-5">Meetings</a>
-                            <a href="#" class="text-dark fs-5">Brand story</a>
-                            <a href="#" class="text-dark fs-5">Media center</a>
-                            <a href="#" class="text-dark fs-5">Corporate info</a>
+    <div class="container-fluid">
+        <div class="container"></div>
+    </div>
+    <div>
+        <center>
+            <table class="table table-dark table-striped" border="2" id="tableemployee" style="margin-right: 25px ; margin-left: -50px" >
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>NAME</th>
+                    <th>BIRTH DAY</th>
+                    <th>ID CARD</th>
+                    <th>SALARY</th>
+                    <th>PHONE NUMBER</th>
+                    <th>EMAIL</th>
+                    <th>ADDRESS</th>
+                    <th>ID POSITION</th>
+                    <th>ID EDUCATION DEGREE</th>
+                    <th>ID DIVISION</th>
+                    <th>ID USERNAME</th>
+                    <th>ACTION</th>
+                    <th>ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="data" items="${employeeList}" varStatus="stt">
+                <tr>
+                    <td>${stt.count}</td>
+                    <td><c:out value="${data.getName()}"/></td>
+                    <td><c:out value="${data.getBirthDay()}"/></td>
+                    <td><c:out value="${data.getIdCard()}"/></td>
+                    <td><c:out value="${data.getSalary()}"/></td>
+                    <td><c:out value="${data.getPhone()}"/></td>
+                    <td><c:out value="${data.getEmail()}"/></td>
+                    <td><c:out value="${data.getAddress()}"/></td>
+                    <td><c:out value="${data.getPosition_id()}"/></td>
+                    <td><c:out value="${data.getEducation_id()}"/></td>
+                    <td><c:out value="${data.getDivision_id()}"/></td>
+                    <td><c:out value="${data.getUserName()}"/></td>
+                    <td>
+                            <%--                    <!-- Button trigger modal EDIT -->--%>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1${data.getId()}">
+                            Chỉnh Sửa
+                        </button>
+
+                            <%--                    <!-- Modal -->--%>
+                        <div class="modal fade" id="exampleModal1${data.getId()}" tabindex="-1"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1" style="color: #000">Thay đổi thông
+                                            tin</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="color: #000 ; text-decoration-color: white " >
+                                        Bạn có muốn thay đổi thông tin <strong class="text-danger">${data.getName()}</strong>
+                                        không ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <a href="/employees?action=edit&id=${data.getId()}" class="btn btn-secondary">Thay Đổi</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="d-flex flex-column gap-2">
-                            <a href="#" class="text-dark fs-5">Lifestyle blog</a>
-                            <a href="#" class="text-dark fs-5">Careers</a>
-                            <a href="#" class="text-dark fs-5">Contact us</a>
-                            <a href="#" class="text-dark fs-5">Notices</a>
-                            <a href="#" class="text-dark fs-5">EGifts</a>
-                            <a href="#" class="text-dark fs-5">Expore south-east asia </a>
+                    </td>
+
+                    <td>
+                        <!-- Button trigger modal DELETE -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${data.getId()}">
+                            Delete
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade " id="sp${data.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content bg-white">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="color: #000 ; text-decoration-color: white " >
+                                        Bạn có muốn xóa <strong class="text-danger">${data.getName()}</strong>
+                                        không ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a href="/employees?action=delete&id=${data.getId()}" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="d-flex flex-column gap-2">
-                            <a href="#" class="text-dark fs-5">Travel agents</a>
-                            <a href="#" class="text-dark fs-5">Sitemap</a>
-                            <a href="#" class="text-dark fs-5">Terms & Conditions</a>
-                            <a href="#" class="text-dark fs-5">Privacy policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </td>
+                    </c:forEach>
+                </tbody>
+
+            </table>
+        </center>
     </div>
 </section>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tableemployee').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5,
+        });
+    });
+</script>

@@ -32,6 +32,20 @@ public class Employee {
         this.userName = userName;
     }
 
+    public Employee(String name, String birthDay, String idCard, Double salary, String phone, String email, String address, int position_id, int education_id, int division_id, String userName) {
+        this.name = name;
+        this.birthDay = birthDay;
+        this.idCard = idCard;
+        this.salary = salary;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.position_id = position_id;
+        this.education_id = education_id;
+        this.division_id = division_id;
+        this.userName = userName;
+    }
+
     public int getId() {
         return id;
     }

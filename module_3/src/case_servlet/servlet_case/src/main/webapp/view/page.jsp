@@ -56,6 +56,7 @@
         </ul>
     </div>
 </section>
+
 <div class="container-fluid" >
     <div class="row">
         <div class="col-3"  >
@@ -73,7 +74,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/employees" class="nav-link link-success"style="font-size: 17px !important;">
+                        <a href="/employees?action=list" class="nav-link link-success"style="font-size: 17px !important;">
                             <svg class="bi me-2" width="16" height="16" ><use xlink:href="#speedometer2"></use></svg>
                             Employee
                         </a>
@@ -118,6 +119,8 @@
         </div>
     </div>
 </div>
+
+
 <section class="footer d-flex justify-content-center mt-5">
     <div class="wrapper container">
         <div class="row h-100">
