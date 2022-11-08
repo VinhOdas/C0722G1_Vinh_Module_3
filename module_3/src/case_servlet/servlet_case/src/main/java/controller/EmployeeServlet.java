@@ -34,6 +34,9 @@ public class EmployeeServlet extends HttpServlet {
             case "edit":
                 editEmployee(request, response);
                 break;
+            case "search":
+                searchEmployee(request, response);
+                break;
             default:
                 listEmployee(request, response);
                 break;
@@ -123,9 +126,7 @@ public class EmployeeServlet extends HttpServlet {
             case "delete":
                 deleteEmployee(request, response);
                 break;
-            case "search":
-                searchEmployee(request, response);
-                break;
+
             default:
                 listEmployee(request, response);
                 break;
@@ -135,6 +136,19 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void searchEmployee(HttpServletRequest request, HttpServletResponse response) {
+        String nameSearch = request.getParameter("nameSearch");
+        String address = request.getParameter("searchAddress");
+        List<Employee> employeeList = employeeService.searchEmployeeDouble(nameSearch,address);
+        request.setAttribute("employeeList",employeeList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/employee/list.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -160,7 +174,7 @@ public class EmployeeServlet extends HttpServlet {
             request.getRequestDispatcher("view/employee/edit.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
-        } catch (IOException e) {            e.printStackTrace();
+        } catch (IOException e) { e.printStackTrace();
 
         }
 

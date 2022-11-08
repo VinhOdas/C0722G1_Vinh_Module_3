@@ -35,5 +35,10 @@ public class EmployeeService implements IEmployeeService {
 
     }
 
+    @Override
+    public List<Employee> searchEmployeeDouble(String nameSearch, String address) {
+        return employeeRepository.searchEmployeeDouble(nameSearch,address);
+    }
+
 
 }

@@ -29,15 +29,59 @@ public class CustomerServlet extends HttpServlet {
                 listCustomer(request, response);
                 break;
             case "add":
-
+                addCustomer(request,response);
                 break;
             case "edit":
-
+                editCustomer(request,response);
+                break;
+            case "search":
+                searchCustomer(request, response);
                 break;
             default:
                 listCustomer(request, response);
                 break;
 
+        }
+    }
+
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int customerType = Integer.parseInt(request.getParameter("customer-type"));
+        String name = request.getParameter("name");
+        String dateOfBirth = request.getParameter("birthday");
+        String idCard = request.getParameter("id-card");
+        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        String phone = request.getParameter("phonenumber");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer customer = new Customer(id,customerType, name, dateOfBirth, gender, idCard, phone, email, address);
+        customerService.updateCustomer(customer);
+        try {
+            request.getRequestDispatcher("view/customer/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerType = Integer.parseInt(request.getParameter("customer_type"));
+        String name = request.getParameter("name");
+        String dateOfBirth = request.getParameter("birthday");
+        String idCard = request.getParameter("id_card");
+        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        String phone = request.getParameter("phone_number");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer customer = new Customer(customerType, name, dateOfBirth, gender, idCard, phone, email, address);
+        customerService.addCustomer(customer);
+        try {
+            request.getRequestDispatcher("view/customer/add.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -51,17 +95,15 @@ public class CustomerServlet extends HttpServlet {
         switch (action) {
 
             case "add":
-                addFormEmployee(request, response);
+                addFormCustomer(request, response);
                 break;
             case "edit":
                 showEditForm(request, response);
                 break;
             case "delete":
-                deleteEmployee(request, response);
+                deleteCustomer(request, response);
                 break;
-            case "search":
-                searchEmployee(request, response);
-                break;
+
             default:
                 listCustomer(request, response);
                 break;
@@ -83,19 +125,50 @@ public class CustomerServlet extends HttpServlet {
 
     }
 
-    private void searchEmployee(HttpServletRequest request, HttpServletResponse response) {
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
+        String name  = request.getParameter("nameSearch");
+        List<Customer> customerList = customerService.searchCustomer(name);
+        request.setAttribute("customerList",customerList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean check = false;
+        check = customerService.deleteCustomer(id);
+        String message = "Không xóa được";
+        if (check) {
+            message = "Xóa nhân viên thành công";
+        }
+        request.setAttribute("message", message);
+        request.setAttribute("check", check);
+        listCustomer(request, response);
 
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private void addFormEmployee(HttpServletRequest request, HttpServletResponse response) {
+    private void addFormCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/add.jsp");
+        dispatcher.forward(request,response);
 
     }
 }

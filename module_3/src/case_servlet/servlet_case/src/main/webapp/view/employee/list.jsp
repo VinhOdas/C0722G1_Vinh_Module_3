@@ -56,15 +56,10 @@
             <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract
 ">Contract</a></li>
         </ul>
-        <form style="margin-top: 23px" action="/employees">
-            <input type="hidden" name="action" value="find">
-            <input type="text" name="search">
-            <select name="employee_type">
-                <option value="0">----</option>
-                <option value="1"></option>
-                <option value="2"></option>
-                <option value="3"></option>
-            </select>
+        <form style="margin-top: 23px" action="/employees?action=search" method="post">
+            <input type="text" name="nameSearch">
+            <input type="text" name="searchAddress">
+
             <input type="submit" value="Search" class="btn btn-info">
         </form>
     </div>

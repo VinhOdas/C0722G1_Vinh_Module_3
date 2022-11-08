@@ -55,10 +55,10 @@
             </li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="/contract">Contract</a></li>
         </ul>
-        <form action="/customers">
-            <input type="hidden" name="action" value="find">
-            <input type="text" name="name">
-            <input type="submit" value="Search" class="btn btn-info">
+        <form action="/customers?action=search" method="post" style="display: flex">
+            <input class="form-control w-auto mx-2" type="text" placeholder="Search by Name..." name="nameSearch">
+            <input class="btn btn-outline-success mx-2" type="submit" style="color: white" value="Search"
+                   style="margin-right: 0!important;">
         </form>
     </div>
     <table id="tableCustomer" class="table table-dark" style="text-align: center" border="1">
@@ -99,12 +99,12 @@
                 <td>
                         <%--                    <!-- Button trigger modal EDIT -->--%>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal1${data.getId()}">
+                            data-bs-target="#exampleModal1${customer.getId()}">
                         Chỉnh Sửa
                     </button>
 
                         <%--                    <!-- Modal -->--%>
-                    <div class="modal fade" id="exampleModal1${data.getId()}" tabindex="-1"
+                    <div class="modal fade" id="exampleModal1${customer.getId()}" tabindex="-1"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -115,13 +115,13 @@
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" style="color: #000 ; text-decoration-color: white " >
-                                    Bạn có muốn thay đổi thông tin <strong class="text-danger">${data.getName()}</strong>
+                                    Bạn có muốn thay đổi thông tin <strong class="text-danger">${customer.getName()}</strong>
                                     không ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                     </button>
-                                    <a href="/customers?action=edit&id=${data.getId()}" class="btn btn-secondary">Thay Đổi</a>
+                                    <a href="/customers?action=edit&id=${customer.getId()}" class="btn btn-secondary">Thay Đổi</a>
                                 </div>
                             </div>
                         </div>
@@ -130,11 +130,11 @@
 
                 <td>
                     <!-- Button trigger modal DELETE -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${data.getId()}">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${customer.getId()}">
                         Delete
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade " id="sp${data.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade " id="sp${customer.getId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog ">
                             <div class="modal-content bg-white">
                                 <div class="modal-header">
@@ -142,12 +142,12 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" style="color: #000 ; text-decoration-color: white " >
-                                    Bạn có muốn xóa <strong class="text-danger">${data.getName()}</strong>
+                                    Bạn có muốn xóa <strong class="text-danger">${customer.getName()}</strong>
                                     không ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a href="/employees?action=delete&id=${data.getId()}" class="btn btn-danger">Delete</a>
+                                    <a href="/customers?action=delete&id=${customer.getId()}" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>

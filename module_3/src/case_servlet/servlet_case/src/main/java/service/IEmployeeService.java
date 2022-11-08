@@ -14,4 +14,7 @@ public interface IEmployeeService {
     boolean editEmployee(Employee employeeEdit);
 
     void addEmployee(Employee employee);
+
+    List<Employee> searchEmployeeDouble(String nameSearch, String address);
+
 }

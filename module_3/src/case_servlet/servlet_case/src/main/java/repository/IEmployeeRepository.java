@@ -14,4 +14,6 @@ public interface IEmployeeRepository {
     boolean editEployee(Employee employeeEdit);
 
     void addEmployee(Employee employee);
+
+    List<Employee> searchEmployeeDouble(String nameSearch, String address);
 }
