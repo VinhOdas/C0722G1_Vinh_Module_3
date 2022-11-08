@@ -22,7 +22,7 @@
         <a href="/users?action=create">Add New User</a>
     </h2>
     <form method="post" action="/users?action=searchCountry">
-        <input name="country" type="text"  >
+        <input name="country" type="text" value="${country}"  >
         <button type="submit">Search</button>
     </form>
 </center>

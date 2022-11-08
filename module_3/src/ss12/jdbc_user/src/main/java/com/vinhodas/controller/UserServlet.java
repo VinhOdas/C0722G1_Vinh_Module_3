@@ -50,6 +50,7 @@ public class UserServlet extends HttpServlet {
         String country = request.getParameter("country");
         List<User> listUser = userSerivce.findByCountry(country);
         request.setAttribute("listUser", listUser);
+        request.setAttribute("country",country);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
         try {
             dispatcher.forward(request, response);
