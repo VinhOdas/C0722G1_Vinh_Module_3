@@ -136,10 +136,11 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void searchEmployee(HttpServletRequest request, HttpServletResponse response) {
-        String nameSearch = request.getParameter("nameSearch");
-        String address = request.getParameter("searchAddress");
-        List<Employee> employeeList = employeeService.searchEmployeeDouble(nameSearch,address);
+        String nameSearch = request.getParameter("search");
+        List<Employee> employeeList = employeeService.searchEmployeeDouble(nameSearch);
         request.setAttribute("employeeList",employeeList);
+        request.setAttribute("search",nameSearch);
+        request.setAttribute("saveSearch",nameSearch);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/employee/list.jsp");
         try {
             dispatcher.forward(request,response);

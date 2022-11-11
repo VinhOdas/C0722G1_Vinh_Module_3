@@ -1,6 +1,7 @@
 package controller;
 
 import model.Customer;
+import model.CustomerType;
 import repository.ICustomerRepository;
 import service.ICustomerService;
 import service.impl.CustomerService;
@@ -46,7 +47,7 @@ public class CustomerServlet extends HttpServlet {
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        int customerType = Integer.parseInt(request.getParameter("customer-type"));
+        int customerType = Integer.parseInt(request.getParameter("type"));
         String name = request.getParameter("name");
         String dateOfBirth = request.getParameter("birthday");
         String idCard = request.getParameter("id-card");
@@ -114,7 +115,9 @@ public class CustomerServlet extends HttpServlet {
 
     private void listCustomer(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customerList = this.customerService.selectAll();
+        List<CustomerType> customerTypeList = this.customerService.selectAllCustomerType();
         request.setAttribute("customerList",customerList);
+        request.setAttribute("customerTypeList",customerTypeList);
         try {
             request.getRequestDispatcher("view/customer/list.jsp").forward(request,response);
         } catch (ServletException e) {

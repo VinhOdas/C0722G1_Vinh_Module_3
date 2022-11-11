@@ -4,6 +4,7 @@ import model.Employee;
 import repository.IEmployeeRepository;
 import repository.impl.EmployeeRepository;
 import service.IEmployeeService;
+import validation.Validation;
 
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public List<Employee> searchEmployeeDouble(String nameSearch, String address) {
-        return employeeRepository.searchEmployeeDouble(nameSearch,address);
+    public List<Employee> searchEmployeeDouble(String nameSearch ) {
+        return  employeeRepository.searchEmployeeDouble(nameSearch);
     }
 
 

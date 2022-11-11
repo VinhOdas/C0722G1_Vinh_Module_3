@@ -23,7 +23,8 @@ public class EmployeeRepository implements IEmployeeRepository {
                     " `id_card`, `salary`, `phone_number`," +
                     " `email`, `address`, `position_id`, " +
                     "`education_degree_id`, `division_id`,`username`) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-    public static final String SEARCH_NAME_ADDRESS = "select * from employee where is_delete=0 and name like ? and address like ?;";
+    public static final String SEARCH_NAME_ADDRESS = "select * from employee where is_delete=0 and (name like ? " +
+            "or address like ?);";
 
 
     @Override
@@ -149,13 +150,13 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public List<Employee> searchEmployeeDouble(String nameSearch, String address) {
+    public List<Employee> searchEmployeeDouble(String search ) {
         List<Employee> employeeSearch = new ArrayList<>();
         Connection connection = DataBaseRepository.getConnection();
         try {
             PreparedStatement ps =connection.prepareStatement(SEARCH_NAME_ADDRESS);
-            ps.setString(1, "%" + nameSearch + "%");
-            ps.setString(2, "%" + address + "%");
+            ps.setString(1, "%" + search + "%" );
+            ps.setString(2, "%" + search + "%" );
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt("id");

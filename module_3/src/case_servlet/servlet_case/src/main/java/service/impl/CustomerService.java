@@ -1,6 +1,7 @@
 package service.impl;
 
 import model.Customer;
+import model.CustomerType;
 import repository.ICustomerRepository;
 import repository.impl.CustomerRepository;
 import service.ICustomerService;
@@ -16,6 +17,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void addCustomer(Customer customer) {
+
         customerRepository.addCustomer(customer);
     }
 
@@ -32,5 +34,10 @@ public class CustomerService implements ICustomerService {
     @Override
     public List<Customer> searchCustomer(String name) {
         return customerRepository.searchCustomer(name);
+    }
+
+    @Override
+    public List<CustomerType> selectAllCustomerType() {
+        return customerRepository.selectAllCustomerType();
     }
 }

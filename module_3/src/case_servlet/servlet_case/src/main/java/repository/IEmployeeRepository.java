@@ -15,5 +15,5 @@ public interface IEmployeeRepository {
 
     void addEmployee(Employee employee);
 
-    List<Employee> searchEmployeeDouble(String nameSearch, String address);
+    List<Employee> searchEmployeeDouble(String nameSearch);
 }
