@@ -18,4 +18,6 @@ public interface ICustomerService {
     List<Customer> searchCustomer(String name);
 
     List<CustomerType> selectAllCustomerType();
+
+    Customer findById(int id);
 }

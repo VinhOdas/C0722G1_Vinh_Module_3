@@ -2,6 +2,7 @@ package repository.impl;
 
 import model.Customer;
 import model.CustomerType;
+import model.Employee;
 import repository.DataBaseRepository;
 import repository.ICustomerRepository;
 
@@ -20,6 +21,8 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String DELETE_CUSTOMER_SQL = "update customer set is_delete = 1  where id = ?;";
     private static final String UPDATE_CUSTOMER_SQL = "update customer set customer_type_id = ?,name= ?,date_of_birth=?,gender=?,id_card=?,phone_number=?, email=?,address=? where id = ?;";
     private static final String SEARCH_NAME_CUSTOMER = "select * from customer where name like ?";
+    public static final String SELECT_CUSTOMER_BY_ID = "select * from customer where id =?";;
+
 
     @Override
     public List<Customer> selectAll() {
@@ -153,4 +156,32 @@ public class CustomerRepository implements ICustomerRepository {
         }
         return customerTypeList;
     }
-}
+
+    @Override
+    public Customer findById(int id) {
+        Customer customer= null;
+        Connection connection = DataBaseRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID);
+            preparedStatement.setInt(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int idCustomer = rs.getInt("id");
+                int customerTypeId = rs.getInt("customer_type_id");
+                String name = rs.getString("name");
+                String dateOfBirth = rs.getString("date_of_birth");
+                boolean gender = rs.getBoolean("gender");
+                String idCard = rs.getString("id_card");
+                String phoneNumber = rs.getString("phone_number");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                customer = new Customer(idCustomer, customerTypeId, name, dateOfBirth, gender, idCard,
+                        phoneNumber, email, address);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return customer;
+    }
+
+    }

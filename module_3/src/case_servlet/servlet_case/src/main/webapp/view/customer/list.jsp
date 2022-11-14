@@ -8,7 +8,9 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <title></title>
+
     <link rel="stylesheet" href="../file_css/reset.css">
     <link rel="stylesheet" href="../file_css/index.css">
 </head>
@@ -61,6 +63,25 @@
                    style="margin-right: 0!important;">
         </form>
     </div>
+    <c:if test="${mess!=null}">
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <svg class="bd-placeholder-img rounded me-2" width="20" height="20"
+                         xmlns="http://www.w3.org/2000/svg"
+                         aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#007aff"></rect>
+                    </svg>
+                    <strong class="me-auto"><span style="vertical-align: inherit;"><span
+                            style="vertical-align: inherit;">Create Customer</span></span></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Đóng"></button>
+                </div>
+                <div class="toast-body"><span style="vertical-align: inherit;"><span
+                        style="vertical-align: inherit;">
+               <strong> ${mess}</strong> </span></span></div>
+            </div>
+        </div>
+    </c:if>
     <table id="tableCustomer" class="table table-dark" style="text-align: center" border="1">
         <thead>
         <tr>

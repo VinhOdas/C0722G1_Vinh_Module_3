@@ -2,6 +2,7 @@ package controller;
 
 import model.Customer;
 import model.CustomerType;
+import model.Employee;
 import repository.ICustomerRepository;
 import service.ICustomerService;
 import service.impl.CustomerService;
@@ -47,7 +48,7 @@ public class CustomerServlet extends HttpServlet {
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        int customerType = Integer.parseInt(request.getParameter("type"));
+        int customerType = Integer.parseInt(request.getParameter("customer_type_id"));
         String name = request.getParameter("name");
         String dateOfBirth = request.getParameter("birthday");
         String idCard = request.getParameter("id-card");
@@ -58,9 +59,8 @@ public class CustomerServlet extends HttpServlet {
         Customer customer = new Customer(id,customerType, name, dateOfBirth, gender, idCard, phone, email, address);
         customerService.updateCustomer(customer);
         try {
-            request.getRequestDispatcher("view/customer/edit.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+//            request.getRequestDispatcher("view/customer/edit.jsp").forward(request, response);
+            response.sendRedirect("/customers");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,15 +72,20 @@ public class CustomerServlet extends HttpServlet {
         String dateOfBirth = request.getParameter("birthday");
         String idCard = request.getParameter("id_card");
         boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        request.setAttribute("Men",gender);
         String phone = request.getParameter("phone_number");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         Customer customer = new Customer(customerType, name, dateOfBirth, gender, idCard, phone, email, address);
         customerService.addCustomer(customer);
+        request.setAttribute("mess", "Thêm mới thành công");
         try {
-            request.getRequestDispatcher("view/customer/add.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+            try {
+                request.getRequestDispatcher("view/customer/add.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+//            response.sendRedirect("/customers");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -158,6 +163,12 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer =customerService.findById(id);
+        request.setAttribute("customer",customer);
+        List<CustomerType> customerTypeList = this.customerService.selectAllCustomerType();
+        request.setAttribute("customerTypeList",customerTypeList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
         try {
             dispatcher.forward(request,response);
@@ -170,6 +181,11 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void addFormCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        List<CustomerType> customerTypeList = this.customerService.selectAllCustomerType();
+        request.setAttribute("customerTypeList",customerTypeList);
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/add.jsp");
         dispatcher.forward(request,response);
 

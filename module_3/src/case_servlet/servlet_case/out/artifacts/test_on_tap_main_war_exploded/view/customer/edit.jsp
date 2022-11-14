@@ -1,5 +1,8 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -11,23 +14,33 @@
 
     <form method="post">
         <table border="1px">
-            <tr>
-                <td>
-                    <pre>Tye:</pre>
-                </td>
-                <td><input type="text" name="type" value="${customer.type}"></td>
-            </tr>
+            <th>Customer type:</th>
+            <td>
+                <select name="customer_type_id">
+<%--                    <c:forEach var="cusType" items="${customerTypeList}">--%>
+<%--                        <option value="${cusType.getCustomerType()}"--%>
+<%--&lt;%&ndash;                                <c:if test="${cusType.getCustomerType() == customer.getType()}">seleced</c:if>>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                ${cusType.getName()}&ndash;%&gt;--%>
+<%--                        --%>
+<%--                        </option>--%>
+<%--                    </c:forEach>--%>
+                 <c:forEach var="data" items="${customerTypeList}" >
+                    <option value="${data.getCustomerType()}">
+                            ${data.getName()}</option>
+                </c:forEach>
+                </select>
+            </td>
             <tr>
                 <td>
                     <pre>Name:</pre>
                 </td>
-                <td><input type="text" name="name" value="${customer.name}"></td>
+                <td><input type="text" name="name"value="${customer.getName()}"></td>
             </tr>
             <tr>
                 <td>
                     <pre>Birthday:</pre>
                 </td>
-                <td><input type="date" name="birthday" value="${customer.dateOfBirth}" ></td>
+                <td><input type="date" name="birthday" value="${customer.getBirthDay()}"></td>
             </tr>
             </tr>
             <tr>
@@ -38,10 +51,11 @@
             </tr>
             </tr>
             <tr>
+                <td>Gender:</td>
                 <td>
-                    <pre>Gender:</pre>
+                    <input type="radio" name="gender" size="45" <c:if test="${customer.isGender()}"> checked</c:if>>Nam
+                    <input type="radio" name="gender" size="45" <c:if test="${!customer.isGender()}"> checked</c:if> >Nữ
                 </td>
-                <td><input type="radio" name="gender" value="true">Nam <input type="radio" value="false" name="gender"> Nữ</td>
             </tr>
             <tr>
                 <td>
@@ -59,10 +73,13 @@
                 <td>
                     <pre>Address:</pre>
                 </td>
-                <td><input type="text" name="address" value="${customer.address}"></td>
+                <td><input type="text" name="address" value = "${customer.address}"></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit" value="Save"/></td>
+
+                <td></td>
+                <td><input type="submit" value="Update "></td>
+
             </tr>
         </table>
     </form>
