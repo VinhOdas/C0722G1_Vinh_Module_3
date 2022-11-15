@@ -82,10 +82,11 @@ public class CustomerServlet extends HttpServlet {
         try {
             try {
                 request.getRequestDispatcher("view/customer/add.jsp").forward(request, response);
+//                response.sendRedirect("/customers");
             } catch (ServletException e) {
                 e.printStackTrace();
             }
-//            response.sendRedirect("/customers");
+//
         } catch (IOException e) {
             e.printStackTrace();
         }

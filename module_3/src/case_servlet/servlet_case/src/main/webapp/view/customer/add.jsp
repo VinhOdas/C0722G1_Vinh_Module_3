@@ -68,14 +68,13 @@
             <tr>
                 <th>Customer birthday:</th>
                 <td>
-                    <input type="date" name="birthday"  required  pattern="^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$
-" id="birthday" size="45"/>
+                    <input type="date" name="birthday"  required  pattern="^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$" id="birthday" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer id_card:</th>
                 <td>
-                    <input type="text" name="id_card" id="id_card" size="45"required/>
+                    <input type="text" name="id_card" id="id_card" size="45"required pattern="[0-9]{9}"/>
                 </td>
             </tr>
             <tr>
@@ -96,19 +95,19 @@
             <tr>
                 <th>Customer phone_number:</th>
                 <td>
-                    <input type="text" name="phone_number" id="phone_number" size="45" required/>
+                    <input type="text" name="phone_number" id="phone_number" size="45" required pattern="^[(][0-9]{2}[)]-[(]0[0-9]{9}[)]$">
                 </td>
             </tr>
             <tr>
                 <th>Customer email:</th>
                 <td>
-                    <input type="text" name="email" id="email" size="45" required/>
+                    <input type="text" name="email" id="email" size="45" required pattern=“^[([A-Za-z]+)([0-9]*)]{5,30}@[a-z]+(\.[a-z]+)$">
                 </td>
             </tr>
             <tr>
                 <th>Customer address:</th>
                 <td>
-                    <input type="text" name="address" id="addres" size="45" required/>
+                    <input type="text" name="address" id="addres" size="45" required pattern="^[0-9A-Za-z vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ[/][,][-]]+$"/>
                 </td>
             </tr>
 

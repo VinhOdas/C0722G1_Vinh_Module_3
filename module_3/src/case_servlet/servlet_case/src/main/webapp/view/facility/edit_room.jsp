@@ -6,33 +6,33 @@
 </head>
 <body>
 <center>
-    <h2>Add New Room</h2>
+    <h2>Edit Room</h2>
     <form method="post">
         <table border="1px">
             <td>
                 <pre>Name:</pre>
             </td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" name="name" value="${facility.serviceName}"></td>
             </tr>
             <tr>
                 <td>
                     <pre>Area:</pre>
                 </td>
-                <td><input type="text" name="area"></td>
+                <td><input type="text" name="area" value="${facility.usingArea}"></td>
             </tr>
             </tr>
             <tr>
                 <td>
-                    <pre>Price:  </pre>
+                    <pre>Price:</pre>
                 </td>
-                <td><input type="text" name="price"></td>
+                <td><input type="text" name="price" value="${facility.price}"></td>
             </tr>
             </tr>
             <tr>
                 <td>
-                    <pre>Max people:  </pre>
+                    <pre>Max people:</pre>
                 </td>
-                <td><input type="text" name="max_people"></td>
+                <td><input type="text" name="max_people" value="${facility.maximumPeople}"></td>
             </tr>
             <tr>
                 <td>
@@ -53,7 +53,7 @@
                     <pre>Facility Free:</pre>
                 </td>
                 <td>
-                    <input type="text" name="facility_free">
+                    <input type="text" name="facility_free" value="${facility.facilityFree}">
                 </td>
             </tr>
             <tr>
